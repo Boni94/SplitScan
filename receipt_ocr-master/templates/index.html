@@ -1,0 +1,39 @@
+<html>
+<head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css" />
+        <style>
+        h1 {
+  color: red;
+  font-size: 80px;
+  
+}
+
+body{
+  background-color:#b8dec2;
+}
+
+.mystyle{
+  color: #383838;
+  font-size: 60px;
+  padding:20px;
+}
+ 
+.formstyle{
+  color: black;
+  font-size: 20px;
+  padding:10px;
+}
+        </style>
+</head>
+    <body>
+      <img src="https://summerschool.shsg.ch/images/TheCO_Logo_schwarz_summer-school.png" width="50%">
+        <center>
+        <div style='padding: 100px;'>
+            <h1 class="mystyle">Scan your receipt</h1>
+            <form action = "/uploader" method = "POST" enctype = "multipart/form-data">
+            <input type = "file" name = "file"  class="formstyle" />
+            <input type = "submit" class="formstyle"/>
+            </form>
+        </div></center>
+    </body>
+</html>

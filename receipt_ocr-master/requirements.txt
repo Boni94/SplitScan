@@ -1,0 +1,5 @@
+flask
+pillow
+pytesseract
+oauth2client
+gspread
