@@ -16,7 +16,7 @@ def write2(my_path,recognized_list):
     for each_list in recognized_list:
         #shopping_records = open(my_path, "a", newline="")
         scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-        creds = ServiceAccountCredentials.from_json_keyfile_name('/Users/Hannah.air/Desktop/receipt_ocr-master/WG_Kostenplaner/receipt_ocr-master/client_secret.json', scope)
+        creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
         client = gspread.authorize(creds)
         sheet = client.open('ReceiptsList').sheet1
         sheet.insert_row(each_list)

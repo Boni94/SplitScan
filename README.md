@@ -1,1 +1,1 @@
-# WG_Kostenplaner
+# SplitScan

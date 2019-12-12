@@ -1,6 +1,6 @@
 import tempfile
 import cv2
-import np
+import numpy as np
 
 def preprocess(image):
     return  image
