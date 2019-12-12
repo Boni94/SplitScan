@@ -29,3 +29,5 @@ def get_date(text):
         print("Date not found. Please enter the date manually")
         date = str(input("Enter year ") + "-" + input("Enter month ") + "-" + input("Enter day "))
         return date    
+
+        

@@ -33,3 +33,4 @@ def remove_noise_and_smooth(file_name):
 
 #dpi_image = set_image_dpi('C:\\Users\\shsg\\Desktop\\summerschool\\project_ocr\\receipt\\grey_1.jpg')
 #smooth_image = remove_noise_and_smooth(dpi_image)
+

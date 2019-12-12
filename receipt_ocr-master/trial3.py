@@ -64,3 +64,4 @@ text = ocr_engine.doOcr(image)
 # csv_writer.write(os.path.join(working_directory, 'result.csv'), recognized_list)
 
 print(text)
+
