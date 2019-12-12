@@ -12,6 +12,13 @@ body{
   background-color:#b8dec2;
 }
 
+.mystyle2{
+  color: #383838;
+  font-size: 30px;
+  padding:0px;
+  margin-bottom:30px;
+}
+
 .mystyle{
   color: #383838;
   font-size: 60px;
@@ -28,11 +35,15 @@ body{
     <body>
         <center>
         <div style='padding: 100px;'>
-            <h1 class="mystyle">Scan your receipt</h1>
+            <img style="width:170px;" src="https://cdn4.iconfinder.com/data/icons/add-1/60/barcode-512.png">
+            <h1 class="mystyle">SplitScan&trade;</h1>
+            <h2 class="mystyle2">The next generation in receipt scanning, powered by AI.</h2>
             <form action = "/uploader" method = "POST" enctype = "multipart/form-data">
             <input type = "file" name = "file"  class="formstyle" />
             <input type = "submit" class="formstyle"/>
             </form>
+            <br>
+            <p class="">&copy; December 2019 by Hannah, Benjamin and Luca. All rights reserved.</p>
         </div></center>
     </body>
 </html>

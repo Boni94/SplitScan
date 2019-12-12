@@ -26,7 +26,7 @@ def recognize(text):
         category = "Groceries"
     else:
         name = "Not implemented"   
-    return [name, total, date, category]
+    return [name, total, date, category, "Per person $xx"]
 
 
 def get_filenames(a_dirname):
