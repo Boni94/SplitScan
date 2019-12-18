@@ -1,8 +1,11 @@
+#we need csv to read and write tabular data in the spreadsheet
 import csv
 
+#the following is needed to manipulate the path of certain data we use
 from os.path import join, dirname, realpath
 
-
+#the following function lists the data of the receipts into a csv-file
+#every new object is written on a new row
 def write(my_path,recognized_list):
     for each_list in recognized_list:
         shopping_records = open(my_path, "a", newline="")
@@ -11,10 +14,11 @@ def write(my_path,recognized_list):
             writer.writerow(each_list)
         shopping_records.close()
 
-
+#we use gspread to use google spreadsheets to store our data
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+#the following function writes the data into the google spreadsheet.
 def write2(my_path,recognized_list):
     for each_list in recognized_list:
         #shopping_records = open(my_path, "a", newline="")
@@ -26,25 +30,5 @@ def write2(my_path,recognized_list):
         list_of_hashes = sheet.get_all_records()
         print(list_of_hashes)
 
-print("Writing complete")
 
-'''def write(file, value_list):
-    print("write values into csv file")
-
-["02.02.2020","groceries","23.20"]
-shopping_records = open("C:\\Users\\dinti\\Documents\\Studium\\Master\\Summerschool\\Python Files\\receipt_ocr\\" + "shopping_records.csv", "a", newline="")
-
-import csv
-
-my_data = ["02.02.2020","groceries","23.20"]
-
-def write(my_data,my_path):
-    shopping_records = open(my_path, "a", newline="")
-    with shopping_records:
-        writer = csv.writer(shopping_records)
-        writer.writerow(my_data)
-    shopping_records.close()
-
-write(my_data)
-'''
 

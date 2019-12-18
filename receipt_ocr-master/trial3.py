@@ -51,17 +51,9 @@ def ocr_all_images(folder_name):
     return recognized_list
 
 image = Image.open('C:\\Users\\SophiaUngerer\\Desktop\\SummerSchool\\receipt_ocr\\receipt\\grey\\grey_3.jpg')
-#image = image_preprocessing.preprocess(image)
+
 text = ocr_engine.doOcr(image)
-#recognized_list = recognize(text)
-#csv_writer.write('C:\\Users\\shsg\\Desktop\\summerschool\\project_ocr\\result.csv', recognized_list)
 
-#print(recognized_list)
-
-# working_directory = dir_path = os.path.dirname(os.path.realpath(__file__))
-# img_path = os.path.join(working_directory, "receipt")
-# recognized_list = ocr_all_images(img_path)
-# csv_writer.write(os.path.join(working_directory, 'result.csv'), recognized_list)
 
 print(text)
 

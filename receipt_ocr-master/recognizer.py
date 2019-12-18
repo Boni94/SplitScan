@@ -1,24 +1,28 @@
+#first of all, the necessary functions need to be imported into this main code from the libraries
 import ocr_engine
 import coop_recognizer
 import migros_recognizer
 import csv_writer
-# import image_preprocessing
+
 try:
     from PIL import Image
 except ImportError:
     import Image
 import os
 
+#the data depends on the store of which the receipt is from and therefore we need an if/elif/else differentiation
 def recognize(text):
     name = ""
     total = "notFound"
     date = None
     category = ""
+#if it's a Coop receipt the following data will be read from the receipt and labeled as the variables below
     if(coop_recognizer.is_coop(text)):
         name = "Coop"
         total =  coop_recognizer.get_total(text)
         date = coop_recognizer.get_date(text)
         category = "Groceries"
+#if it's a Migros receipt the following data will be read from the receipt and labeled as the variables below  
     elif(migros_recognizer.is_migros(text)):
         name = "Migros"
         total =  migros_recognizer.get_total(text)
@@ -26,9 +30,10 @@ def recognize(text):
         category = "Groceries"
     else:
         name = "Not implemented"   
-    return [name, total, date, category, "Per person $xx"]
+#in either case we want the following informations to be returned from all receipts  
+    return [name, total, date, category]
 
-
+#we use the os.listdir() to manipulate/use the paths contained in the directory "a_dirname" and put them in a list
 def get_filenames(a_dirname):
   list_of_files = os.listdir(a_dirname)
   all_files = []
@@ -36,10 +41,13 @@ def get_filenames(a_dirname):
     full_path = os.path.join(a_dirname,filename)
     if os.path.isdir(full_path): # if the file is a dir we skip it
       pass
+ #all the files (besides from dir will be added to the list "all_files")
     else:
       all_files.append(full_path)
   return all_files
 
+#this function applies the optical character recognition tool to all receipts
+#and adds the ones that were recognizable to the list "recognized_list"
 def ocr_all_images(folder_name):
     img_list = get_filenames(folder_name)
     recognized_list = []
@@ -49,7 +57,9 @@ def ocr_all_images(folder_name):
       text = ocr_engine.doOcr(image)
       recognized_list.append(recognize(text))
     return recognized_list
-  
+
+#this function applies the optical character recognition tool to single receipts
+#and adds the ones that were recognizable to the list "recognized_list" 
 def ocr_single_image(pic):
     img_list = [pic]
     recognized_list = []
@@ -60,12 +70,7 @@ def ocr_single_image(pic):
       recognized_list.append(recognize(text))
     return recognized_list
 
-#image = Image.open('C:\\Users\\shsg\\Desktop\\summerschool\\project_ocr\\receipt\\img_3412.jpg')
-#image = image_preprocessing.preprocess(image)
-#text = ocr_engine.doOcr(image)
-#recognized_list = recognize(text)
-#csv_writer.write('C:\\Users\\shsg\\Desktop\\summerschool\\project_ocr\\result.csv', recognized_list)
-#print(recognized_list)
+
 
 def run():
   working_directory = os.path.dirname(os.path.realpath(__file__))
@@ -85,7 +90,10 @@ def run_single(filename):
   csv_writer.write(os.path.join(working_directory, 'result.csv'), recognized_list)
 
 
-
+#the last statement we need is: if __name__ == "__main__" which makes the underlying function "run()"
+#only being executed if we're in the home script. This is crucial since we imported several functions from 
+#our libraries into the home script. It prevents the imported code from beeing run because the 
+#interpreter labels the imported code as __name__ but not as __main__
 if __name__ == "__main__":
   run()
 
